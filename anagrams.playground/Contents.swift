@@ -1,23 +1,22 @@
 import Foundation
 
 class Anagram {
-    private static var trace:String = ""
+    private static var tempString:String = ""
     static var anagramedString: String = ""
    
     static func generateAnagrams(line : String) -> String {
         if(line.count == 1){
             
-            trace.append(contentsOf: line)
-            anagramedString.append("\(trace) ")
-//            print("\(trace)")
-            trace =  trace.replacingOccurrences(of: line, with: "")
+            tempString.append(contentsOf: line)
+            anagramedString.append("\(tempString) ")
+            tempString =  tempString.replacingOccurrences(of: line, with: "")
         }
         else
         {
             for i in line{
-                trace.append(i)
+                tempString.append(i)
                 generateAnagrams(line: line.replacingOccurrences(of: String(i), with: ""))
-                trace =  trace.replacingOccurrences(of: String(i), with: "")
+                tempString =  tempString.replacingOccurrences(of: String(i), with: "")
             }
         }
         return anagramedString
